@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <title>G.Music | Login</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="icon" href="music-favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <section class="main" id="main">
+      <div class="text-container">
+        <h1>Listen,Enjoy,Relax</h1>
+        <p class="note">Listen and enjoy uninterrupted music</p>
+      </div>
+      <div class="person-detail">
+        <div class="users-container-new" id="users-container"></div>
+            <div class="users">
+                <input type="text" class="text-field" id="text-field-1" placeholder="Name">
+                <input type="submit" value="Log In" class="btn-explore" id="btn-explore" onclick="userTextField()">
+                <input type="submit" value="Explore" class="btn-explore-2" id="second-btn-explore" onclick="goLink()">
+            </div>
+        </div>
+    </section>
+    <!---Inside-view-->
+    <section class="inside-view" id="inside-view">
+        <div class="greeting">
+            <h1>Hello, <span id="greet-user">Shiva</span></h1>
+            <div class="profile" id="profile"></div>
+        </div>
+        <h1 class="artist-tag">Top artists</h1>
+        <div class="top-artist">
+            <div class="artist artist-1">
+                <h2 class="singer-name">Sid-sriram <br> Hits</h2>
+                <img src="sid-sriram.png" alt="">
+            </div>
+            <div class="artist artist-2">
+                <h2 class="singer-name">Anirudh <br> Beats</h2>
+                <img src="Anirudh.png" alt="">
+            </div>
+            <div class="artist artist-3">
+                <h2 class="singer-name">Ar Rahman <br>melodies</h2>
+                <img src="rahman.png" alt="">
+            </div>
+            <div class="artist artist-4">
+                <h2 class="singer-name">Yuvan<br>bgms</h2>
+                <img src="yuvan.png" alt="">
+            </div>
+            <div class="artist artist-5">
+                <h2 class="singer-name">DSP <br>Mass</h2>
+                <img src="dsp.png" alt="">
+            </div>
+        </div>
+        <div class="user-music">
+            <h1 class="your-music">Your Music</h1>
+            <div class="music-cards">
+             <a href="uyire.html"><div class="music music-card-1" id="music-card-1">
+                    <p>Uyire</p>
+                </div></a>
+             <a href="rangrez.html"> <div class="music music-card-2">
+                    <p>rangrez</p>
+                </div></a> 
+                <a href="">  <div class="music music-card-3">
+                    <p>jalte Diye</p>
+                </div></a> 
+                <a href="">  <div class="music music-card-4">
+                    <p>edho..</p>
+                </div></a> 
+                <a href="">  <div class="music music-card-5">
+                    <p>Idhi cha..</p>
+                </div></a> 
+                <a href=""> <div class="music music-card-6">
+                    <p>Nee sin</p>
+                </div></a> 
+                <a href="">  <div class="music music-card-7">
+                    <p>Kayile</p>
+                </div></a> 
+                <a href=""> <div class="music music-card-8">
+                    <p>Aaradhya</p>
+                </div></a> 
+                <a href=""> <div class="music music-card-9">
+                    <p>Avunanava</p>
+                </div></a> 
+                <a href=""> <div class="music music-card-10">
+                    <p>luka chu..</p>
+                </div></a> 
+                <a href=""> <div class="music music-card-11">
+                    <p>En sarwa</p>
+                </div></a> 
+                <a href=""> <div class="music music-card-12">
+                    <p>Tere Haw</p>
+                </div></a> 
+            </div>
+        </div>
+        <div class="quick-picks">
+            <h1 class="quick-picks-title">Quick Picks</h1>
+            <div class="pick-cards">
+                <a href="">  <div class="pick pick-card-1">
+                    <h2>Dance</h2>
+                </div></a> 
+                <a href=""> <div class="pick pick-card-2">
+                    <h3>Romance</h3>
+                </div></a> 
+                <a href="">  <div class="pick pick-card-3">
+                    <h2>Relax</h2>
+                </div></a> 
+                <a href="">  <div class="pick pick-card-4">
+                    <h3 class="move-card card-4">Focus</h3>
+                </div></a> 
+                <a href="">  <div class="pick pick-card-5">
+                    <h2 class="move-card card-5">Mood</h2>
+                </div></a> 
+                <a href="">  <div class="pick pick-card-6">
+                    <h3 class="move-card card-6">Happy</h3>
+                </div></a> 
+            </div>
+        </div>
+    </section>
+ <!---Play Now-->
+<!-- <section class="play-now" id="play-now">
+    <div class="header" id="header">
+       <a href="login.html"> <i class="fa-solid fa-arrow-right fa-rotate-180 fa-2x" id="fa-arrow-right" style="color: #ffffff;"></i> </a>     
+    </div>
+    <div class="song">
+        <div class="song-card" id="song-card">
+            <h1>Uyire</h1>
+            <p>Gauthamante Radham</p>
+        </div>
+        <div class="music-player">
+        <audio  src="uyire.mp3" id="song"></audio>
+        <input type="range" value="0" id="progess">
+        <div class="controls" >
+            <div class="music-controllers"><i class="fa-solid fa-backward fa-1x"></i></div>
+            <div class="music-controllers" onclick="playPause()"><i  class="fa-solid fa-pause fa-1x" id="cntrlIcon"></i></div>
+            <div class="music-controllers"><i class="fa-solid fa-forward fa-1x"></i></div>
+        </div>
+    </div>
+    </div>
+</section> -->
+
+    <script src="login.js"></script>
+</body>
+</html>

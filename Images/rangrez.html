@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <title>G.music | Uyire</title>
+    <link rel="icon" href="music-favicon.png">
+    <!-- <link rel="stylesheet" href="uyire.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;600&family=Montserrat:wght@300&family=Poppins:wght@300;400&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --f1: 'Kanit', sans-serif;
+    --f2: 'Montserrat', sans-serif;
+    --f3: 'Poppins', sans-serif;
+}
+
+body {
+    /* background: "linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.65)), url('GR-bg.jpg')";
+    background-size: cover;
+    background-repeat: no-repeat; */
+    background-image: linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.65)), url('Bhaag.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 0;
+    background-attachment: fixed;
+   
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.play-now {
+    height: 100vh;
+    width: 100%;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 12px;
+    
+}
+
+.fa-arrow-right {
+    cursor: pointer;
+    position: fixed;
+    top: 10px;
+}
+
+.song {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.song-card {
+    width: 200px;
+    height: 200px;
+    margin-top: 50px;
+    border: 2px solid white;
+    border-radius: 50%;
+    background-image: url(Bhaag.jpg);
+    background-repeat: no-repeat;
+    background-size: 300px;
+    background-position: 50% 0%;
+    position: fixed;
+    text-align: center;
+}
+
+.song-card h1 {
+    position: absolute;
+    top: 210px;
+    left: 70px;
+    color: white;
+    font-family: var(--f3);
+    font-size: 1.8rem;
+}
+
+.song-card p {
+    position: absolute;
+    top: 250px;
+    left: 10px;
+    color: white;
+    font-family: var(--f3);
+    width: 100%;
+}
+
+.music-player {
+    width: 80%;
+}
+
+#progess {
+    position: relative;
+    top: 60%;
+    -webkit-appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #292828;
+}
+
+#progess::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color: #292828;
+    border: 4px solid white;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+}
+
+.controls {
+    margin-top: 30%;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 50%;
+    align-items: center;
+}
+
+.controls div {
+    width: 40px;
+    height: 40px;
+    margin: 30px;
+    background: #292828;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: teal;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(95, 53, 53, 0.22);
+}
+
+.controls div:nth-child(2) {
+    transform: scale(1.5);
+}
+
+
+/*inside-view*/
+
+.inside-view {
+    display: none;
+}
+
+.greeting {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+}
+
+.greeting h1 {
+    color: teal;
+    font-family: var(--f1);
+    font-size: 2rem;
+}
+
+.greeting h1 span {
+    color: white;
+    font-family: var(--f1);
+    font-size: 2.5rem;
+}
+
+.greeting .profile {
+    width: 50px;
+    height: 50px;
+    border: 2px solid white;
+    border-radius: 50%;
+    background-image: url();
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+
+/*top-artist*/
+
+.artist-tag {
+    height: 20px;
+    width: 40%;
+    font-size: 1.2rem;
+    color: #fff;
+    font-family: var(--f3);
+    margin-left: 20px;
+}
+
+.top-artist {
+    width: 100%;
+    height: 200px;
+    display: grid;
+    grid-template-columns: repeat(5, 220px);
+    gap: 2rem;
+    align-items: center;
+}
+
+.artist {
+    height: 140px;
+    border: 1px solid white;
+    border-radius: 12px;
+    background-image: url(background.jpg);
+    background-size: cover;
+    overflow: hidden;
+}
+
+.artist img {
+    width: 110px;
+    height: 150px;
+    position: relative;
+    top: -80px;
+}
+
+.singer-name {
+    margin-left: 100px;
+    margin-top: 50px;
+    text-align: center;
+    color: #fff;
+    font-family: var(--f2);
+    font-size: 1.2rem;
+}
+
+.artist-2 img {
+    width: 120px;
+    height: 150px;
+    position: relative;
+    top: -60px;
+}
+
+
+.artist-3 img {
+    width: 180px;
+    height: 150px;
+    position: relative;
+    top: -65px;
+}
+
+.artist-4 img {
+    width: 200px;
+    height: 150px;
+    position: relative;
+    top: -65px;
+    right: 20%;
+}
+
+.artist-5 img {
+    width: 110px;
+    height: 150px;
+    position: relative;
+    top: -70px;
+    right: 5%;
+}
+
+.artist:hover {
+    box-shadow: 10px 10px 20px white;
+}
+
+/*user-music*/
+
+.user-music {
+    height: 50vh;
+    width: 100%;
+}
+
+.your-music {
+    color: #fff;
+    font-family: var(--f3);
+    font-size: 1.3rem;
+    margin-left: 20px;
+}
+
+.music-cards {
+    margin-left: 20px;
+    margin-top: 12px;
+    display: grid;
+    grid-template-columns: repeat(6, 80px);
+    gap: 2rem;
+    text-align: center;
+    color: #fff;
+    font-family: var(--f3);
+    font-weight: 700;
+}
+
+.music {
+    border-radius: 12px;
+}
+
+.music-cards p {
+    margin-top: 105%;
+    margin-bottom: 20px;
+}
+
+.music-card-1 {
+    background-image: url(Gauthamante_Radham_film.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.music-card-2 {
+    background-image: url(Bhaag_Milkha_Bhaag_poster.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.music-card-3 {
+    background-image: url(Prem_Ratan_Dhan_Payo_Release_Poster.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.music-card-4 {
+    background-image: url(Gowtam_SSC_poster.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.music-card-5 {
+    background-image: url(Sehari_poster.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.music-card-6 {
+    background-image: url(Pathu_Thala.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.music-card-7 {
+    background-image: url(Soorarai_Pottru.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.music-card-8 {
+    background-image: url(Kushi.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.music-card-9 {
+    background-image: url(Ori_Devuda.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.music-card-10 {
+    background-image: url(Rang_De_Basanti_poster.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.music-card-11 {
+    background-image: url(777_Charlie_official_poster.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.music-card-12 {
+    background-image: url(Laal_Singh_Chaddha.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.music {
+    height: 80px;
+    width: 80px;
+    border: 1px solid black;
+}
+
+.pick-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 60px);
+    gap: 2rem;
+    column-gap: 20%;
+    margin-left: 20px;
+    margin-top: 12px;
+}
+
+.pick-card-1 {
+    background-image: url(dance.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.pick-card-2 {
+    background-image: url(romanctic.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.pick-card-3 {
+    background-image: url(relax.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.pick-card-4 {
+    background-image: url(focus.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.pick-card-5 {
+    background-image: url(mood.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.pick-card-6 {
+    background-image: url(happy.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.pick {
+    height: 60px;
+    width: 60px;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+.pick-cards h2 {
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 8%;
+    font-size: 1.4rem;
+    font-family: var(--f2);
+}
+
+.pick-cards h3 {
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 32%;
+    font-size: 1.4rem;
+    font-family: var(--f2);
+}
+
+.quick-picks h1 {
+    color: #fff;
+    font-family: var(--f3);
+    font-size: 1.3rem;
+    margin-left: 20px;
+}
+
+.quick-picks {
+    width: 50%;
+    overflow: hidden
+}
+
+
+@media screen and (max-width: 600px) {
+
+    .play-now {
+        height: 100vh;
+        width: 100%;
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px 12px;
+    }
+
+    .fa-arrow-right {
+        cursor: pointer;
+        position: fixed;
+        top: 10px;
+    }
+
+    .song {
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .song-card {
+        width: 200px;
+        height: 200px;
+        margin-top: 50px;
+        border: 2px solid white;
+        border-radius: 50%;
+        background-image: url(Bhaag.jpg);
+        position: fixed;
+        text-align: center;
+    }
+
+    .song-card h1 {
+        position: absolute;
+        top: 210px;
+        left: 70px;
+        color: white;
+        font-family: var(--f3);
+        font-size: 1.8rem;
+    }
+
+    .song-card p {
+        position: absolute;
+        top: 250px;
+        left: 10px;
+        color: white;
+        font-family: var(--f3);
+        width: 100%;
+    }
+
+    #progess {
+        position: relative;
+        top: 60%;
+        -webkit-appearance: none;
+        width: 100%;
+        height: 8px;
+    }
+
+    .controls {
+        margin-top: 110%;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 50%;
+        align-items: center;
+        
+        
+    .greeting h1 {
+        color: teal;
+        font-family: var(--f1);
+        font-size: 1.5rem;
+    }
+
+    .greeting h1 span {
+        color: white;
+        font-family: var(--f1);
+        font-size: 1.5rem;
+    }
+
+    .greeting .profile {
+        width: 30px;
+        height: 30px;
+        border: 1px solid white;
+        border-radius: 50%;
+        background-image: url();
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+    }
+
+    .top-artist {
+        overflow-x: scroll;
+    }
+
+    .music-cards {
+        overflow-x: scroll;
+    }
+
+    /*user-music*/
+
+    .user-music {
+        height: 38vh;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .your-music {
+        color: #fff;
+        font-family: var(--f3);
+        font-size: 1.3rem;
+        margin-left: 20px;
+    }
+
+    .music-cards {
+        height: 250px;
+        margin-left: 20px;
+        display: grid;
+        grid-template-columns: repeat(6, 80px);
+        row-gap: 0.5rem;
+    }
+
+    .music {
+        height: 80px;
+        width: 80px;
+        border: 1px solid black;
+        border-radius: 12px;
+    }
+
+    .quick-picks {
+        width: 100%;
+    }
+
+    .quick-picks h1 {
+        color: #fff;
+        font-family: var(--f3);
+        font-size: 1.3rem;
+        margin-left: 20px;
+    }
+
+
+    .pick-cards {
+        display: grid;
+        grid-template-columns: repeat(2, 60px);
+        gap: 2rem;
+        column-gap: 25%;
+        margin-left: 20px;
+        margin-top: 12px;
+
+    }
+
+    .pick {
+        height: 50px;
+        width: 50px;
+        border: 1px solid black;
+    }
+
+    .pick-cards h2 {
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        left: 25%;
+        font-size: 1rem;
+        font-family: var(--f2);
+        color: white;
+    }
+
+    .pick-cards h3 {
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        left: 65%;
+        font-size: 1rem;
+        font-family: var(--f2);
+        color: white;
+    }
+
+    }
+}
+    </style>
+    <section class="play-now" id="play-now">
+        <div class="header" id="header">
+            <a href="inside-view.html"> <i class="fa-solid fa-arrow-right fa-rotate-180 fa-2x" id="fa-arrow-right"
+                    style="color: #ffffff;"></i> </a>
+        </div>
+        <div class="song">
+            <div class="song-card" id="song-card">
+                <h1>Uyire</h1>
+                <p>Gauthamante Radham</p>
+            </div>
+            <div class="music-player">
+                <audio src="rangrez.opus" id="song"></audio>
+                <input type="range" value="0" id="progess">
+                <div class="controls">
+                    <div class="music-controllers"><i class="fa-solid fa-backward fa-1x"></i></div>
+                    <div class="music-controllers" onclick="playPause()"><i class="fa-solid fa-pause fa-1x"
+                            id="cntrlIcon"></i></div>
+                    <div class="music-controllers"><i class="fa-solid fa-forward fa-1x"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="inside-view" id="inside-view">
+        <div class="greeting">
+            <h1>Hello, <span id="greet-user">Shiva</span></h1>
+            <div class="profile" id="profile"></div>
+        </div>
+        <h1 class="artist-tag">Top artists</h1>
+        <div class="top-artist">
+            <div class="artist artist-1">
+                <h2 class="singer-name">Sid-sriram <br> Hits</h2>
+                <img src="sid-sriram.png" alt="">
+            </div>
+            <div class="artist artist-2">
+                <h2 class="singer-name">Anirudh <br> Beats</h2>
+                <img src="Anirudh.png" alt="">
+            </div>
+            <div class="artist artist-3">
+                <h2 class="singer-name">Ar Rahman <br>melodies</h2>
+                <img src="rahman.png" alt="">
+            </div>
+            <div class="artist artist-4">
+                <h2 class="singer-name">Yuvan<br>bgms</h2>
+                <img src="yuvan.png" alt="">
+            </div>
+            <div class="artist artist-5">
+                <h2 class="singer-name">DSP <br>Mass</h2>
+                <img src="dsp.png" alt="">
+            </div>
+        </div>
+        <div class="user-music">
+            <h1 class="your-music">Your Music</h1>
+            <div class="music-cards">
+             <a href="uyire.html"><div class="music music-card-1" id="music-card-1">
+                    <p>Uyire</p>
+                </div></a>
+                <a href="rangrez.html"> <div class="music music-card-2">
+                    <p>rangrez</p>
+                </div></a> 
+                <a href="">  <div class="music music-card-3">
+                    <p>jalte Diye</p>
+                </div></a> 
+                <a href="">  <div class="music music-card-4">
+                    <p>edho..</p>
+                </div></a> 
+                <a href="">  <div class="music music-card-5">
+                    <p>Idhi cha..</p>
+                </div></a> 
+                <a href=""> <div class="music music-card-6">
+                    <p>Nee sin</p>
+                </div></a> 
+                <a href="">  <div class="music music-card-7">
+                    <p>Kayile</p>
+                </div></a> 
+                <a href=""> <div class="music music-card-8">
+                    <p>Aaradhya</p>
+                </div></a> 
+                <a href=""> <div class="music music-card-9">
+                    <p>Avunanava</p>
+                </div></a> 
+                <a href=""> <div class="music music-card-10">
+                    <p>luka chu..</p>
+                </div></a> 
+                <a href=""> <div class="music music-card-11">
+                    <p>En sarwa</p>
+                </div></a> 
+                <a href=""> <div class="music music-card-12">
+                    <p>Tere Haw</p>
+                </div></a> 
+            </div>
+        </div>
+        <div class="quick-picks">
+            <h1 class="quick-picks-title">Quick Picks</h1>
+            <div class="pick-cards">
+                <a href="">  <div class="pick pick-card-1">
+                    <h2>Dance</h2>
+                </div></a> 
+                <a href=""> <div class="pick pick-card-2">
+                    <h3>Romance</h3>
+                </div></a> 
+                <a href="">  <div class="pick pick-card-3">
+                    <h2>Relax</h2>
+                </div></a> 
+                <a href="">  <div class="pick pick-card-4">
+                    <h3 class="move-card card-4">Focus</h3>
+                </div></a> 
+                <a href="">  <div class="pick pick-card-5">
+                    <h2 class="move-card card-5">Mood</h2>
+                </div></a> 
+                <a href="">  <div class="pick pick-card-6">
+                    <h3 class="move-card card-6">Happy</h3>
+                </div></a> 
+            </div>
+        </div>
+    </section>
+   <script>
+
+
+song.onloadedmetadata = function () {
+    progess.max = song.duration;
+    progess.value = song.currentTime;
+}
+
+function playPause() {
+    if (cntrlIcon.classList.contains("fa-pause")) {
+        song.pause();
+        cntrlIcon.classList.remove("fa-pause");
+        cntrlIcon.classList.add("fa-play");
+    }
+    else {
+        song.play();
+        cntrlIcon.classList.add("fa-pause");
+        cntrlIcon.classList.remove("fa-play");
+    }
+}
+
+if (song.play()) {
+    setInterval(() => {
+        progess.value = song.currentTime;
+    }, 500);
+}
+
+progess.onchange = function () {
+    song.play();
+    song.currentTime = progess.value;
+    cntrlIcon.classList.add("fa-pause");
+    cntrlIcon.classList.remove("fa-play");
+}
+
+
+
+   </script>
+</body>
+</html>
